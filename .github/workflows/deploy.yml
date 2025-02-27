@@ -13,6 +13,8 @@ jobs:
           - host: 1.bj.aliyun.bonjour.zone
             pubkey: AAAAC3NzaC1lZDI1NTE5AAAAIFij2QuvS/uuJh9/8DhMLPl50eTeWixEGEb9oHwBKjba
     steps:
+      - name: Make ssh directory
+        run: mkdir ~/.ssh 
       - name: Configure ssh known_hosts
         run: echo '${{ matrix.host }} ssh-ed25519 ${{ matrix.pubkey }}' >> ~/.ssh/known_hosts
       - name: Configure ssh private key
