@@ -29,7 +29,7 @@ jobs:
         run: ssh service@${{ matrix.host }} mkdir -p /home/service/.config/containers/systemd/proxy
       - name: deploy service
         run: rsync -v -p -r * service@${{ matrix.host }}:/home/service/.config/containers/systemd/proxy
-      - name: pre-start service
+      - name: load service
         run: ssh service@${{ matrix.host }} systemctl --user daemon-reload
       - name: start service
         run: ssh service@${{ matrix.host }} systemctl --user restart proxy-volume proxy
