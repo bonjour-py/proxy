@@ -19,12 +19,12 @@ jobs:
         run: echo '${{ matrix.host }} ssh-ed25519 ${{ matrix.pubkey }}' >> ~/.ssh/known_hosts
       - name: Configure ssh private key
         run: echo '${{ secrets.SSH_KEY }}' >> ~/.ssh/id_ed25519; chmod u=rw,go= ~/.ssh/id_ed25519
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Make secrets directory
         run: mkdir secrets
       - name: Configure secrets ALIYUN_OSS
         run: echo '${{ secrets.ALIYUN_OSS }}' >> secrets/aliyun_oss; chmod u=rw,go= secrets/aliyun_oss
-      - name: Checkout repository
-        uses: actions/checkout@v4
       - name: Make service directory
         run: ssh service@${{ matrix.host }} mkdir -p /home/service/.config/containers/systemd/auth
       - name: deploy service
