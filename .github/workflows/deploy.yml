@@ -32,5 +32,5 @@ jobs:
       - name: pre-start service
         run: ssh service@${{ matrix.host }} systemctl --user daemon-reload
       - name: start service
-        run: ssh service@${{ matrix.host }} systemctl --user restart proxy.volume proxy.container
+        run: ssh service@${{ matrix.host }} systemctl --user restart proxy-volume proxy
      
