@@ -28,7 +28,7 @@ jobs:
       - name: Make service directory
         run: ssh service@${{ matrix.host }} mkdir -p /home/service/.config/containers/systemd/auth
       - name: deploy service
-        run: rsync --perms --recursive * service@${{ matrix.host }}:/home/service/.config/containers/systemd/auth
+        run: rsync -v -p -r * service@${{ matrix.host }}:/home/service/.config/containers/systemd/auth
       - name: pre-start service
         run: ssh service@${{ matrix.host }} systemctl --user daemon-reload
       - name: start service
