@@ -4,7 +4,9 @@ Description = Podman Container %N
 AutoUpdate = registry
 Image = ghcr.io/traefik/traefik
 Environment = TRAEFIK_ACCESSLOG=true
+Environment = TRAEFIK_LOG_LEVEL=INFO
 Environment = TRAEFIK_PROVIDERS_FILE_DIRECTORY=/config
+Environment = TRAEFIK_PROVIDERS_FILE_WATCH=false
 Environment = TRAEFIK_CERTIFICATESRESOLVERS_DEFAULT_ACME_STORAGE=/acme/acme.json
 Environment = TRAEFIK_CERTIFICATESRESOLVERS_DEFAULT_ACME_EMAIL=bot@bonjour.zone
 Environment = TRAEFIK_CERTIFICATESRESOLVERS_DEFAULT_ACME_TLSCHALLENGE=true
