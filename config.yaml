@@ -1,0 +1,6 @@
+http:
+  middlewares:
+    header:
+      headers:
+        stsSeconds: 15552000
+        browserXssFilter: true

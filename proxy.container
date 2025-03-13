@@ -1,5 +1,3 @@
-[Unit]
-Description = Podman Container %N
 [Container]
 AutoUpdate = registry
 Image = ghcr.io/traefik/traefik
@@ -14,11 +12,15 @@ Environment = TRAEFIK_CERTIFICATESRESOLVERS_DEFAULT_ACME_KEYTYPE=EC384
 Environment = TRAEFIK_ENTRYPOINTS_HTTP_ADDRESS=:80
 Environment = TRAEFIK_ENTRYPOINTS_HTTP_HTTP_REDIRECTIONS_ENTRYPOINT_TO=https
 Environment = TRAEFIK_ENTRYPOINTS_HTTPS_ADDRESS=:443
+Environment = TRAEFIK_ENTRYPOINTS_HTTPS_HTTP_MIDDLEWARES=header@file
 Environment = TRAEFIK_ENTRYPOINTS_HTTPS_HTTP_TLS_CERTRESOLVER=default
 Environment = TRAEFIK_ENTRYPOINTS_HTTPS_HTTP3=true
 PublishPort = 80:80
 PublishPort = 443:443
 PublishPort = 443:443/udp
+
+SecurityLabelDisable = true
+Volume = ./config.yaml:/config/proxy.yaml:ro
 Volume = proxy.volume:/acme
 [Service]
 Restart = on-failure
