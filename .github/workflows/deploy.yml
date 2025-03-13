@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - host: 1.bj.aliyun.bonjour.zone
+          - host: ecs.bj.aliyun.bonjour.zone
             pubkey: AAAAC3NzaC1lZDI1NTE5AAAAIFij2QuvS/uuJh9/8DhMLPl50eTeWixEGEb9oHwBKjba
     steps:
       - name: Make ssh directory
