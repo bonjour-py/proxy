@@ -5,6 +5,7 @@ Environment = TRAEFIK_ACCESSLOG=true
 Environment = TRAEFIK_LOG_LEVEL=INFO
 Environment = TRAEFIK_PROVIDERS_FILE_DIRECTORY=/config
 Environment = TRAEFIK_PROVIDERS_FILE_WATCH=false
+Environment = TRAEFIK_PROVIDERS_DOCKER=true
 Environment = TRAEFIK_CERTIFICATESRESOLVERS_DEFAULT_ACME_STORAGE=/acme/acme.json
 Environment = TRAEFIK_CERTIFICATESRESOLVERS_DEFAULT_ACME_EMAIL=bot@bonjour.zone
 Environment = TRAEFIK_CERTIFICATESRESOLVERS_DEFAULT_ACME_TLSCHALLENGE=true
@@ -20,7 +21,8 @@ PublishPort = 443:443
 PublishPort = 443:443/udp
 
 SecurityLabelDisable = true
-Volume = ./config.yaml:/config/proxy.yaml:ro
+Volume = %t/podman/podman.sock:/var/run/docker.sock:ro
+Volume = ./config.yaml:/config/default.yaml:ro
 Volume = proxy.volume:/acme
 [Service]
 Restart = on-failure
